@@ -1,4 +1,4 @@
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 const User = ({ params }) => {
   const users = [
@@ -6,9 +6,11 @@ const User = ({ params }) => {
     { id: 2, name: "Ahammad" },
     { id: 3, name: "Jubayer" },
     { id: 4, name: "Bappi" },
+  
   ];
-  if(params.userId == 4){
-    redirect("/not-found")
+  if(params.userId > 4){
+    // redirect("/not-found")
+    notFound()
   }
 
   const user = users.find((user) => user.id == params.userId);
