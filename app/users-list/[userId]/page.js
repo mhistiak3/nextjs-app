@@ -1,6 +1,13 @@
 import getSingleUser from "@/lib/getUser";
 import { notFound, redirect } from "next/navigation";
 
+export async function generateMetadata({ params }) {
+  const user = await getSingleUser(params.userId);
+  return {
+    title: user?.name,
+    description: `Information about ${user?.name}`,
+  };
+}
 const User = async ({ params }) => {
   const user = await getSingleUser(params.userId);
   if (!user.name) {
