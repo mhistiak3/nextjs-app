@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 const UsersList = () => {
+  // throw new Error("Something went wrong");
   const users = [
     { id: 1, name: "Istiak" },
     { id: 2, name: "Ahammad" },
