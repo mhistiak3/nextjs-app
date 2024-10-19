@@ -3,9 +3,9 @@ import UserInfo from "@/components/UserInfo";
 import UserTodo from "@/components/UserTodos";
 import getUserTodos from "@/lib/getTodos";
 import getSingleUser from "@/lib/getUser";
+import getAllUsers from "@/lib/getUsers";
 import { notFound, redirect } from "next/navigation";
 import { Suspense } from "react";
-
 
 export async function generateMetadata({ params }) {
   const user = await getSingleUser(params.userId);
@@ -27,11 +27,16 @@ const User = async ({ params }) => {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-8">
       <UserInfo user={user} />
-      <Suspense fallback={<Loader className={'mt-5'}/>}>
-      <UserTodo todosPromise={todosPromise} />
+      <Suspense fallback={<Loader className={"mt-5"} />}>
+        <UserTodo todosPromise={todosPromise} />
       </Suspense>
     </div>
   );
 };
+
+export async function generateStaticParams() {
+  const users = await getAllUsers();
+  return users.map((user) => ({ id: user.id.toString() }));
+}
 
 export default User;
