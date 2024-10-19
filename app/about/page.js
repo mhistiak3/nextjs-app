@@ -1,6 +1,8 @@
 import Button from "@/components/Button";
 import Image from "next/image";
 import logo from "@/public/logo.png";
+
+
 const About = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-gray-100">
