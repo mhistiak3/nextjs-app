@@ -1,14 +1,16 @@
-// "use client";
-// import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const Home = () => {
-  // const router = useRouter();
-  
-  
   return (
-    <div className="text-3xl font-bold h-screen flex justify-center items-center flex-col">
-      <h2 className="text-5xl">useRouter</h2>
-      <button className="text-3xl bg-purple-600 text-white px-4 py-2" >Go To About</button>
+    <div className="h-screen flex flex-col justify-center items-center bg-gradient-to-r from-purple-600  to-purple-800 text-white">
+      <div className="bg-white bg-opacity-20 backdrop-blur-lg rounded-lg p-10 shadow-lg text-center">
+        <h2 className="text-5xl font-bold mb-8">Welcome to Next.js App</h2>
+        <Link href="/about">
+          <button className="text-xl bg-purple-600    px-6 py-3 rounded-lg">
+            Learn More
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };
